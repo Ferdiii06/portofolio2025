@@ -1,10 +1,41 @@
+"use client";
+
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+
 export default function ContactSection() {
+  const formRef = useRef<HTMLFormElement>(null);
+  const linksRef = useRef<HTMLAnchorElement[]>([]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Animasi untuk form
+      if (formRef.current) {
+        gsap.fromTo(
+          formRef.current,
+          { opacity: 0, y: 50 },
+          { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }
+        );
+      }
+
+      // Animasi untuk links
+      const validLinks = linksRef.current.filter((el) => el !== null);
+      if (validLinks.length > 0) {
+        gsap.fromTo(
+          validLinks,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, stagger: 0.2, duration: 1, ease: 'power3.out' }
+        );
+      }
+    }
+  }, []);
+
   return (
     <section id="contact" className="py-12 sm:py-20 bg-black/10 backdrop-blur-sm">
       <div className="container mx-auto px-4 sm:px-6">
         <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-8 sm:mb-12">Get In Touch</h2>
         <div className="max-w-2xl mx-auto">
-          <form className="space-y-4 sm:space-y-6">
+          <form ref={formRef} className="space-y-4 sm:space-y-6">
             <div>
               <label htmlFor="name" className="block text-white mb-1 sm:mb-2 text-sm sm:text-base">Your Name</label>
               <input
@@ -42,18 +73,29 @@ export default function ContactSection() {
           <div className="mt-8 sm:mt-12 text-center">
             <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Or reach me directly</h3>
             <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-              <a href="mailto:ferdi@example.com" className="text-white hover:text-yellow-500 transition-colors duration-300 text-sm sm:text-base">
-                ✉️ Email
-              </a>
-              <a href="https://linkedin.com/in/ferdi" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-500 transition-colors duration-300 text-sm sm:text-base">
-                🔗 LinkedIn
-              </a>
-              <a href="https://github.com/Ferdiii06" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-500 transition-colors duration-300 text-sm sm:text-base">
-                💻 GitHub
-              </a>
-              <a href="https://instagram.com/Ferdiii_f" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-500 transition-colors duration-300 text-sm sm:text-base">
-                📷 Instagram
-              </a>
+              {[
+                { href: 'mailto:ferdi@example.com', label: '✉️ Email' },
+                { href: 'https://linkedin.com/in/ferdi', label: '🔗 LinkedIn' },
+                { href: 'https://github.com/Ferdiii06', label: '💻 GitHub' },
+                { href: 'https://instagram.com/Ferdiii_f', label: '📷 Instagram' },
+              ].map((link, index) => (
+                <a
+                  key={index}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ref={(el) => {
+                    if (el) {
+                      linksRef.current[index] = el; // Tambahkan elemen ke array
+                    } else {
+                      delete linksRef.current[index]; // Hapus elemen dari array
+                    }
+                  }}
+                  className="text-white hover:text-yellow-500 transition-colors duration-300 text-sm sm:text-base"
+                >
+                  {link.label}
+                </a>
+              ))}
             </div>
           </div>
         </div>

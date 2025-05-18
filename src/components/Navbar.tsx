@@ -1,8 +1,22 @@
+"use client";
+
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { gsap } from 'gsap';
 
 export default function Navbar() {
+  const navRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      navRef.current,
+      { y: -100, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
+    );
+  }, []);
+
   return (
-    <nav className="bg-white/20 backdrop-blur-sm fixed w-full z-10">
+    <nav ref={navRef} className="bg-white/20 backdrop-blur-sm fixed w-full z-10">
       <div className="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
         <div className="text-2xl sm:text-3xl font-bold text-black">Ferdi</div>
         <ul className="flex space-x-4 sm:space-x-8">

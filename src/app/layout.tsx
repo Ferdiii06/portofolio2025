@@ -14,8 +14,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} font-sans bg-gradient-to-r from-yellow-500 to-gray-500 min-h-screen`}>
-        {children}
+      <body className="bg-gradient-to-br from-sky-100 via-blue-200 to-indigo-200 dark:from-slate-800 dark:via-indigo-900 dark:to-slate-900 transition-colors duration-500">
+  {children}
       </body>
     </html>
   );

@@ -31,6 +31,16 @@ export default function Navbar() {
             </Link>
           </li>
           <li className="hover:scale-110 transition-transform duration-300">
+            <Link href="#skills" className="text-black font-medium sm:font-semibold text-lg sm:text-xl hover:text-gray-800">
+              Skills
+            </Link>
+            </li>
+          <li className="hover:scale-110 transition-transform duration-300">
+            <Link href="#projects" className="text-black font-medium sm:font-semibold text-lg sm:text-xl hover:text-gray-800">
+              Projects
+            </Link>
+          </li>
+          <li className="hover:scale-110 transition-transform duration-300">
             <Link href="#contact" className="text-black font-medium sm:font-semibold text-lg sm:text-xl hover:text-gray-800">
               Contact
             </Link>

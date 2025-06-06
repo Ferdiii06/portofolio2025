@@ -22,7 +22,7 @@ export default function ProjectsSection() {
   }, []);
 
   return (
-    <section id="projects" className="py-12 sm:py-20 bg-black/10 backdrop-blur-sm">
+    <section id="projects" className="py-12 sm:py-20 bg-gradient-to-br from-sky-100 via-blue-200 to-indigo-200 dark:from-slate-800 dark:via-indigo-900 dark:to-slate-900 transition-colors duration-500">
       <div className="container mx-auto px-4 sm:px-6">
         <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-8 sm:mb-12">My Projects</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -31,25 +31,25 @@ export default function ProjectsSection() {
               src: '/project 1.png',
               title: 'Portal Desa',
               description: 'Website resmi Desa Suko yang menampilkan informasi tentang desa, keunggulan, dan  Dirancang untuk memudahkan warga desa dan pengunjung mendapatkan informasi dengan cepat.',
-              link: '', // URL untuk Portal Desa Suko
+              link: 'https://github.com/Ferdiii06/TugasWebDesa.git', // URL untuk Portal Desa Suko
             },
             {
               src: '/project 2.png',
               title: 'Permainan Interaktif',
               description: 'Permainan berbasis web yang melatih refleks pengguna dengan gameplay sederhana namun menarik. Cocok untuk hiburan sekaligus meningkatkan konsentrasi.',
-              link: '', // URL untuk Permainan Interaktif
+              link: 'https://github.com/Ferdiii06/gamesimple.git', // URL untuk Permainan Interaktif
             },
             {
               src: '/project 3.png',
               title: 'Portal Berita',
               description: 'Sebuah portal berita yang memungkinkan pengguna untuk membaca dan mengelola berita dengan antarmuka yang sederhana dan responsif.',
-              link: '', // URL untuk Portal Berita
+              link: 'https://github.com/Ferdiii06/portalberita.git', // URL untuk Portal Berita
             },
             {
               src: '/project 4.png',
               title: 'Pemesanan Tiket Kereta Api',
               description: 'Sistem pemesanan tiket kereta api yang memudahkan pengguna untuk mencari dan memesan tiket secara online. Didesain untuk kenyamanan pengguna.',
-              link: '', // URL untuk Portal Berita
+              link: 'https://github.com/Ferdiii06/WebTiketKereta.git', // URL untuk Portal Berita
             },
           ].map((project, index) => (
             <div
@@ -77,7 +77,7 @@ export default function ProjectsSection() {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-yellow-500 text-black font-medium px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-300"
+                  className="inline-block bg-white text-black font-medium px-4 py-2 rounded-lg hover:bg-blue-500  transition-colors duration-300"
                 >
                   Kunjungi Website
                 </a>

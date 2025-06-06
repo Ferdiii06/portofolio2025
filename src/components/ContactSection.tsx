@@ -31,7 +31,7 @@ export default function ContactSection() {
   }, []);
 
   return (
-    <section id="contact" className="py-12 sm:py-20 bg-black/10 backdrop-blur-sm">
+    <section id="contact" className="py-12 sm:py-20 bg-gradient-to-br from-sky-100 via-blue-200 to-indigo-200 dark:from-slate-800 dark:via-indigo-900 dark:to-slate-900 transition-colors duration-500">
       <div className="container mx-auto px-4 sm:px-6">
         <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-8 sm:mb-12">Get In Touch</h2>
         <div className="max-w-2xl mx-auto">
@@ -65,7 +65,7 @@ export default function ContactSection() {
             </div>
             <button
               type="submit"
-              className="w-full bg-yellow-500 text-black font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-lg hover:bg-yellow-600 transition-colors duration-300 text-sm sm:text-base"
+              className="w-full bg-white text-black font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-lg hover:bg-blue-500   transition-colors duration-300 text-sm sm:text-base"
             >
               Send Message
             </button>
@@ -75,7 +75,7 @@ export default function ContactSection() {
             <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
               {[
                 { href: 'mailto:ferdi@example.com', label: '✉️ Email' },
-                { href: 'https://linkedin.com/in/ferdi', label: '🔗 LinkedIn' },
+                { href: 'https://www.linkedin.com/in/ferry-ferdiansyah-0a9b31332/overlay/about-this-profile/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3B%2FkHENSvuQP%2BJ22DT1Dg9Ag%3D%3D', label: '🔗 LinkedIn' },
                 { href: 'https://github.com/Ferdiii06', label: '💻 GitHub' },
                 { href: 'https://instagram.com/Ferdiii_f', label: '📷 Instagram' },
               ].map((link, index) => (

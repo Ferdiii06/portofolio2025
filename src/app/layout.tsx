@@ -1,21 +1,24 @@
 import './globals.css';
-import { Poppins } from 'next/font/google';
-
-const poppins = Poppins({
-  weight: ['300', '400', '500', '600', '700'],
+import { DM_Sans } from 'next/font/google';
+ 
+const dmSans = DM_Sans({
+  weight: ['300', '400', '500', '700', '900'],
   subsets: ['latin'],
-  variable: '--font-poppins',
+  variable: '--font-dm-sans',
 });
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+ 
+export const metadata = {
+  title: 'Ferdi | Frontend Developer',
+  description: 'Portofolio Ferdi, Web Frontend Developer.',
+};
+ 
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${poppins.variable} bg-gradient-to-br from-sky-100 via-blue-200 to-indigo-200 dark:from-slate-800 dark:via-indigo-900 dark:to-slate-900 transition-colors duration-500`}>
-        {children}
+    <html lang="id" className="scroll-smooth">
+      <body className={`${dmSans.variable} font-sans bg-[#fdfbf7] text-black antialiased`}>
+        <main className="relative min-h-screen overflow-x-hidden">
+          {children}
+        </main>
       </body>
     </html>
   );

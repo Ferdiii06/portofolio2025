@@ -1,1 +1,68 @@
 @import "tailwindcss";
+ 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700;900&display=swap');
+ 
+:root {
+  --lux-white: #fdfbf7;
+  --lux-gold: #c5a358;
+  --lux-gold-dark: #a8873c;
+  --brutal-black: #0a0a0a;
+}
+ 
+* {
+  box-sizing: border-box;
+}
+ 
+html {
+  scroll-behavior: smooth;
+}
+ 
+body {
+  background-color: var(--lux-white);
+  color: var(--brutal-black);
+  -webkit-font-smoothing: antialiased;
+  font-family: 'DM Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+ 
+.font-display {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.05em;
+}
+ 
+.font-serif-lux {
+  font-family: 'Playfair Display', serif;
+}
+ 
+/* Shadows */
+.brutal-shadow {
+  box-shadow: 6px 6px 0px 0px var(--brutal-black);
+}
+ 
+.brutal-shadow-gold {
+  box-shadow: 6px 6px 0px 0px var(--lux-gold);
+}
+ 
+.brutal-shadow-lg {
+  box-shadow: 10px 10px 0px 0px var(--brutal-black);
+}
+ 
+/* Hover lift */
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hover-lift:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0px 0px var(--brutal-black);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE & Edge */
+  scrollbar-width: none;     /* Firefox */
+}

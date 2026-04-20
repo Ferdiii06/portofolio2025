@@ -1,4 +1,15 @@
+'use client';
 export default function HeroSection() {
+
+    const cvUrl = "/CV terbaru saya.pdf";
+
+    
+  const handleResume = () => {
+    // Opens the CV in a new browser tab, allowing the user to view or download it
+    window.open(cvUrl, "_blank");
+  };
+
+
   return (
     <section id="home" className="min-h-screen flex flex-col pt-[76px] w-full">
       <div className="flex-1 grid md:grid-cols-2 gap-0 w-full">
@@ -42,10 +53,14 @@ export default function HeroSection() {
               Lihat Karya →
             </a>
             <a
-              href="#contact"
+            href="/CV terbaru saya.pdf"
+              onClick={(e) => {
+                e.preventDefault();
+                handleResume();
+              }}
               className="border-[4px] border-black px-10 py-4 bg-transparent text-black font-black uppercase tracking-tighter hover:bg-black hover:text-white transition-all"
             >
-              Hubungi
+              Resume CV
             </a>
           </div>
  

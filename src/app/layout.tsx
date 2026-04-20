@@ -15,7 +15,10 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="id" className="scroll-smooth">
-      <body className={`${dmSans.variable} font-sans bg-[#fdfbf7] text-black antialiased`}>
+      <head>
+        <link rel="icon" type="image/x-icon" href="/image.png" />
+      </head>
+      <body className={`${dmSans.variable} font-sans  bg-[#fdfbf7] text-black antialiased`}>
         <main className="relative min-h-screen overflow-x-hidden">
           {children}
         </main>

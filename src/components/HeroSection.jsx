@@ -54,7 +54,7 @@ export default function HeroSection() {
             {[
               { num: '2+', label: 'Tahun Coding' },
               { num: '5+', label: 'Proyek Selesai'},
-              { num: '3', label: '' },
+              { num: '2+', label: 'Tahun Pengalaman' },
               
             ].map((s, i) => (
               <div

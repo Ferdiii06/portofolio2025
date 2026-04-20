@@ -23,7 +23,7 @@ export default function ContactSection() {
             <span className="text-black">.</span>
           </h2>
           <p className="font-medium text-gray-600 text-lg max-w-sm">
-            Terbuka untuk kolaborasi projek atau sekadar diskusi teknologi.
+            Saya selalu terbuka untuk peluang baru dan kolaborasi menarik. Jangan ragu untuk menghubungi saya jika Anda memiliki pertanyaan, ingin berdiskusi tentang proyek, atau hanya ingin menyapa. Saya menantikan untuk mendengar dari Anda!
           </p>
         </div>
  

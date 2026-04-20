@@ -30,7 +30,7 @@ export default function HeroSection() {
           </h1>
  
           <p className="text-lg font-medium leading-relaxed max-w-sm mb-12 text-black">
-            Membangun Website dan App Mobile {' '}
+            Saya adalah seorang frontend developer yang bersemangat dengan pengalaman dalam React, Flutter, dan optimasi performa. Saya percaya bahwa desain yang baik haruslah sederhana namun efektif, dan saya selalu berusaha untuk menciptakan pengalaman digital yang intuitif dan memukau. 
             <span className="text-[#c5a358] font-bold"></span>.
           </p>
  

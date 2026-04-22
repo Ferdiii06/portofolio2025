@@ -60,7 +60,7 @@ export default function HeroSection() {
               }}
               className="border-[4px] border-black px-10 py-4 bg-transparent text-black font-black uppercase tracking-tighter hover:bg-black hover:text-white transition-all"
             >
-              Resume CV
+              View CV
             </a>
           </div>
  

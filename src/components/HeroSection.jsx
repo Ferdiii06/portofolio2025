@@ -1,7 +1,7 @@
 'use client';
 export default function HeroSection() {
 
-    const cvUrl = "/CV terbaru saya.pdf";
+    const cvUrl = "/CV Ferry Ferdiansyah.pdf";
 
     
   const handleResume = () => {

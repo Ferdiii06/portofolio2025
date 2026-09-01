@@ -1,60 +1,85 @@
 "use client";
 import { useState, useEffect } from 'react';
- 
+import { useLanguage } from '../context/LanguageContext';
+import MagneticWrapper from './MagneticWrapper';
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
- 
+  const { lang, toggleLang, t } = useLanguage();
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
- 
+
   return (
-    <header className="fixed top-0 z-50 w-full">
+    <header className={`fixed top-0 z-50 w-full transition-all duration-300 ${scrolled ? 'pt-4 px-4' : 'pt-0 px-0'}`}>
       <nav
-        className={`w-full flex items-center justify-between border-b-[6px] border-black bg-[#fdfbf7] transition-all duration-300 ${
-          scrolled ? 'py-3' : 'py-5'
+        className={`mx-auto max-w-5xl flex items-center justify-between transition-all duration-300 ${
+          scrolled 
+            ? 'py-3 px-6 rounded-full bg-custom-light/90 backdrop-blur-md border border-custom-blue/50 shadow-sm' 
+            : 'py-5 px-6'
         }`}
       >
-        {/* Logo — flush left */}
-        <a
-          href="#"
-          className="pl-8 text-3xl uppercase tracking-tighter font-black leading-none"
-          style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.05em' }}
-        >
-          FERDI<span className="text-[#c5a358]">.</span>
-        </a>
- 
-        {/* Nav links — Contact flush right */}
+        {/* Logo */}
+        <MagneticWrapper>
+          <a
+            href="#"
+            className={`${scrolled ? 'pl-2' : 'pl-2'} text-2xl font-bold tracking-tight inline-block text-custom-navy`}
+          >
+            Ferdi<span className="text-custom-blue">.</span>
+          </a>
+        </MagneticWrapper>
+
+        {/* Nav links */}
         <div className="hidden md:flex gap-10 items-center">
-          <a
-            href="#about"
-            className="text-xs font-black uppercase tracking-[0.3em] hover:text-[#c5a358] transition-colors"
-          >
-            About
-          </a>
-          <a
-            href="#skills"
-            className="text-xs font-black uppercase tracking-[0.3em] hover:text-[#c5a358] transition-colors"
-          >
-            Expertise
-          </a>
-          <a
-            href="#projects"
-            className="text-xs font-black uppercase tracking-[0.3em] hover:text-[#c5a358] transition-colors"
-          >
-            Work
-          </a>
-          {/* Contact CTA — full height, no right padding */}
-          <a
-            href="#contact"
-            className={`bg-black text-white text-xs font-black uppercase tracking-[0.3em] px-10 flex items-center hover:bg-[#c5a358] transition-colors ${
-              scrolled ? 'py-3' : 'py-5'
-            }`}
-          >
-            Contact
-          </a>
+          <MagneticWrapper>
+            <a
+              href="#about"
+              className="text-sm font-medium text-custom-blue hover:text-custom-navy transition-colors inline-block"
+            >
+              {t("navAbout")}
+            </a>
+          </MagneticWrapper>
+          <MagneticWrapper>
+            <a
+              href="#skills"
+              className="text-sm font-medium text-custom-blue hover:text-custom-navy transition-colors inline-block"
+            >
+              {t("navExpertise")}
+            </a>
+          </MagneticWrapper>
+          <MagneticWrapper>
+            <a
+              href="#projects"
+              className="text-sm font-medium text-custom-blue hover:text-custom-navy transition-colors inline-block"
+            >
+              {t("navWork")}
+            </a>
+          </MagneticWrapper>
+          
+          {/* Language Toggle */}
+          <MagneticWrapper>
+            <button
+              onClick={toggleLang}
+              className="text-sm font-medium text-custom-blue hover:text-custom-navy transition-colors inline-block"
+            >
+              {lang === 'id' ? 'ID 🇮🇩' : 'EN 🇬🇧'}
+            </button>
+          </MagneticWrapper>
+
+          {/* Contact CTA */}
+          <MagneticWrapper>
+            <a
+              href="#contact"
+              className={`bg-custom-navy text-custom-light text-sm font-medium flex items-center hover:opacity-90 transition-opacity shadow-sm ${
+                scrolled ? 'px-6 py-2 rounded-full mr-2' : 'px-8 py-3 rounded-full'
+              }`}
+            >
+              {t("navContact")}
+            </a>
+          </MagneticWrapper>
         </div>
       </nav>
     </header>

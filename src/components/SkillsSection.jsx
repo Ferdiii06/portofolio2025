@@ -1,73 +1,94 @@
+"use client";
+import { useRef, useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
 export default function SkillsSection() {
+  const { t } = useLanguage();
+  const sectionRef = useRef(null);
+
   const expertise = [
     { name: 'React / Next.js', category: 'Frontend', level: 90 },
-    { name: 'Tailwind CSS', category: 'Styling', level: 95 },
-    { name: 'Laravel / PHP', category: 'Backend', level: 85 },
-    { name: 'PostgreSQL / MySQL', category: 'Database', level: 80 },
+    { name: 'Tailwind CSS / BootStrap', category: 'Styling', level: 95 },
+    { name: 'Laravel / PHP', category: 'Backend', level: 95 },
+    { name: 'Flutter / Dart', category: 'Mobile App', level: 85 },
+    { name: 'PostgreSQL / MySQL / Laragon', category: 'Database', level: 90 },
   ];
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const bars = gsap.utils.toArray('.skill-progress-bar');
+      
+      bars.forEach((bar) => {
+        const targetWidth = bar.getAttribute('data-level') + '%';
+        
+        gsap.fromTo(
+          bar,
+          { width: '0%' },
+          {
+            width: targetWidth,
+            duration: 1.5,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: bar,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
  
   return (
-    <section id="skills" className="w-full py-24 bg-[#fdfbf7] border-b-[6px] border-black">
-      {/* Header — flush dengan konten, pakai px */}
-      <div className="px-10 md:px-16 mb-16">
-        <div className="flex flex-col md:flex-row justify-between items-end gap-6">
-          <h2
-            className="leading-none text-black"
-            style={{
-              fontFamily: "'Bebas Neue', sans-serif",
-              fontSize: 'clamp(56px, 9vw, 120px)',
-              letterSpacing: '0.03em',
-            }}
-          >
-            EXPERTISE <br />
-            <span
-              style={{ fontFamily: "'Playfair Display', serif", fontStyle: 'italic', color: '#c5a358', fontWeight: 400 }}
-            >
-              Skillset
+    <section id="skills" ref={sectionRef} className="w-full py-24 bg-custom-light relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 md:px-10">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-custom-navy">
+            {t("skillsExpertise")} <br />
+            <span className="text-custom-blue">
+              {t("skillsSkillset")}
             </span>
           </h2>
-          <p className="font-bold text-right uppercase text-[10px] tracking-widest max-w-[200px] text-gray-500">
-            Keahlian utama yang saya gunakan untuk membangun proyek digital.
+          <p className="font-medium text-sm text-custom-blue max-w-[250px] md:text-right">
+            {t("skillsDesc")}
           </p>
         </div>
-      </div>
  
-      {/* Grid cards — full bleed dengan border kiri/kanan dihapus */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t-[6px] border-black">
-        {expertise.map((skill, i) => (
-          <div
-            key={skill.name}
-            className={`group bg-white p-10 border-b-[6px] border-black hover:-translate-y-1 hover:bg-[#c5a358] transition-all duration-200 ${
-              i < expertise.length - 1 ? 'border-r-[6px]' : ''
-            } sm:${i % 2 === 0 ? 'border-r-[6px]' : ''} lg:border-r-[6px] last:border-r-0`}
-          >
-            <div className="flex justify-between items-start mb-10">
-              <span className="text-[9px] font-black uppercase tracking-[0.2em] bg-black text-white px-2 py-1 group-hover:bg-white group-hover:text-black transition-colors">
-                {skill.category}
-              </span>
-              <span
-                className="text-2xl text-gray-300 group-hover:text-black transition-colors"
-                style={{ fontFamily: "'Playfair Display', serif", fontStyle: 'italic' }}
-              >
-                {skill.level}%
-              </span>
-            </div>
- 
-            <h3
-              className="text-2xl uppercase leading-tight mb-6 group-hover:text-black transition-colors font-black"
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {expertise.map((skill, i) => (
+            <div
+              key={skill.name}
+              className="soft-panel soft-panel-hover p-8 rounded-3xl group flex flex-col"
             >
-              {skill.name}
-            </h3>
- 
-            {/* Progress bar brutalist */}
-            <div className="w-full h-3 border-2 border-black bg-gray-100 overflow-hidden group-hover:bg-white group-hover:border-black transition-colors">
-              <div
-                className="h-full bg-black group-hover:bg-white transition-colors duration-500"
-                style={{ width: `${skill.level}%` }}
-              />
+              <div className="flex justify-between items-center mb-8">
+                <span className="text-xs font-bold uppercase tracking-widest bg-custom-blue/10 text-custom-navy px-3 py-1 rounded-full group-hover:bg-custom-blue/20 transition-colors">
+                  {skill.category}
+                </span>
+                <span className="text-xl font-bold text-custom-blue group-hover:text-custom-navy transition-colors">
+                  {skill.level}%
+                </span>
+              </div>
+   
+              <h3 className="text-xl font-bold text-custom-navy mb-6 group-hover:text-custom-blue transition-colors">
+                {skill.name}
+              </h3>
+   
+              <div className="w-full h-2 bg-custom-blue/20 rounded-full overflow-hidden mt-auto">
+                <div
+                  className="skill-progress-bar h-full bg-custom-navy rounded-full"
+                  data-level={skill.level}
+                  style={{ width: '0%' }}
+                />
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

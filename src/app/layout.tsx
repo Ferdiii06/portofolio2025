@@ -1,15 +1,16 @@
 import './globals.css';
-import { DM_Sans } from 'next/font/google';
+import { Outfit } from 'next/font/google';
+import { LanguageProvider } from '../context/LanguageContext';
+import CustomCursor from '../components/CustomCursor';
  
-const dmSans = DM_Sans({
-  weight: ['300', '400', '500', '700', '900'],
+const outfitFont = Outfit({
   subsets: ['latin'],
-  variable: '--font-dm-sans',
+  variable: '--font-outfit',
 });
  
 export const metadata = {
-  title: 'Ferdi | Frontend Developer',
-  description: 'Portofolio Ferdi, Web Frontend Developer.',
+  title: 'Ferdi | Portofolio',
+  description: 'Portofolio Ferdi, Web Fullstack Developer, Mobile Apps Developer .',
 };
  
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -18,9 +19,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="icon" type="image/x-icon" href="/image.png" />
       </head>
-      <body className={`${dmSans.variable} font-sans  bg-[#fdfbf7] text-black antialiased`}>
+      <body className={`${outfitFont.variable} font-sans bg-slate-50 text-slate-800 antialiased relative`}>
+        <CustomCursor />
         <main className="relative min-h-screen overflow-x-hidden">
-          {children}
+          <LanguageProvider>
+            {children}
+          </LanguageProvider>
         </main>
       </body>
     </html>
